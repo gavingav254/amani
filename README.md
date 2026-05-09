@@ -55,6 +55,7 @@ Offline access for low-connectivity areas
 LayerTechnologyFrameworkReact Native + ExpoLanguageTypeScriptNavigationReact Navigation v6BackendFirebase (Auth + Firestore + Storage)Real-time ChatFirebase Realtime Database / Stream ChatVideo CallsDaily.co or Agora SDKAI Support ChatAnthropic Claude APIPaymentsM-Pesa Daraja API + StripeNotificationsFirebase Cloud Messaging (FCM)State ManagementZustand or Redux Toolkit
 
 📁 Folder Structure
+
 Amani/
 ├── assets/                  # Images, fonts, icons
 ├── src/
@@ -103,7 +104,7 @@ OpenAI / Anthropic API key (for AI chat)
 
 Installation
 bash# Clone the repository
-git clone https://github.com/yourusername/amani.git
+git clone https://github.com/gavingav254/amani.git
 
 # Navigate into the project
 cd amani
