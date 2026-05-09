@@ -1,8 +1,3 @@
-export type AuthStackParamList = {
-  Onboarding: undefined;
-  Login: undefined;
-};
-
 export type MainTabParamList = {
   Home: undefined;
   Community: undefined;
@@ -11,7 +6,19 @@ export type MainTabParamList = {
   Profile: undefined;
 };
 
+export type AppStackParamList = {
+  MainTabs: undefined;
+  CircleFeed: { circleId: string };
+  JournalEntry: { entryId?: string } | undefined;
+  MoodTracker: undefined;
+  Resources: undefined;
+  Crisis: undefined;
+  TherapistProfile: { therapistId: string };
+  Settings: undefined;
+};
+
 export type RootStackParamList = {
+  Onboarding: undefined;
   Auth: undefined;
-  Main: undefined;
+  App: undefined;
 };

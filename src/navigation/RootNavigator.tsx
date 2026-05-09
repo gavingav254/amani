@@ -1,16 +1,26 @@
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { createStackNavigator } from "@react-navigation/stack";
 
-import { AuthNavigator } from "./AuthNavigator";
-import { MainTabs } from "./MainTabs";
+import { AuthScreen } from "../screens/Auth";
+import { OnboardingScreen } from "../screens/Onboarding";
+import { useAuthStore } from "../store/authStore";
+import { AppNavigator } from "./AppNavigator";
 import type { RootStackParamList } from "./types";
 
-const Stack = createNativeStackNavigator<RootStackParamList>();
+const Stack = createStackNavigator<RootStackParamList>();
 
 export function RootNavigator() {
+  const user = useAuthStore((state) => state.user);
+
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="Auth" component={AuthNavigator} />
-      <Stack.Screen name="Main" component={MainTabs} />
+      {user ? (
+        <Stack.Screen name="App" component={AppNavigator} />
+      ) : (
+        <>
+          <Stack.Screen name="Onboarding" component={OnboardingScreen} />
+          <Stack.Screen name="Auth" component={AuthScreen} />
+        </>
+      )}
     </Stack.Navigator>
   );
 }

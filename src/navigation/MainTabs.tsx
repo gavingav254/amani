@@ -1,11 +1,12 @@
 import { Ionicons } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
-import { CommunityScreen } from "../screens/CommunityScreen";
-import { HomeScreen } from "../screens/HomeScreen";
-import { JournalScreen } from "../screens/JournalScreen";
-import { ProfileScreen } from "../screens/ProfileScreen";
-import { TherapistsScreen } from "../screens/TherapistsScreen";
+import { colors } from "../constants/colors";
+import { CommunityScreen } from "../screens/Community";
+import { HomeScreen } from "../screens/Home";
+import { JournalScreen } from "../screens/Journal";
+import { ProfileScreen } from "../screens/Profile";
+import { TherapistsScreen } from "../screens/Therapists";
 import type { MainTabParamList } from "./types";
 
 const Tab = createBottomTabNavigator<MainTabParamList>();
@@ -14,26 +15,34 @@ const tabIcons: Record<keyof MainTabParamList, keyof typeof Ionicons.glyphMap> =
   Home: "home-outline",
   Community: "people-outline",
   Journal: "book-outline",
-  Therapists: "medkit-outline",
+  Therapists: "heart-outline",
   Profile: "person-outline"
 };
 
 export function MainTabs() {
   return (
     <Tab.Navigator
-      screenOptions={({ route }) => ({
-        headerStyle: { backgroundColor: "#F7F4EE" },
-        headerTitleStyle: { color: "#1F2933", fontWeight: "700" },
-        tabBarActiveTintColor: "#127C6A",
-        tabBarInactiveTintColor: "#6B7280",
+      screenOptions={({ route }: { route: { name: keyof MainTabParamList } }) => ({
+        headerStyle: { backgroundColor: colors.background },
+        headerTitleStyle: { color: colors.text, fontWeight: "800" },
+        tabBarActiveTintColor: colors.primary,
+        tabBarInactiveTintColor: "#7C8491",
         tabBarStyle: {
-          backgroundColor: "#FFFFFF",
-          borderTopColor: "#E5E1D8",
-          height: 64,
+          backgroundColor: colors.white,
+          borderTopColor: "#E7E2F5",
+          height: 66,
           paddingBottom: 8,
-          paddingTop: 8
+          paddingTop: 8,
+          shadowColor: colors.text,
+          shadowOffset: { width: 0, height: -4 },
+          shadowOpacity: 0.05,
+          shadowRadius: 12
         },
-        tabBarIcon: ({ color, size }) => (
+        tabBarLabelStyle: {
+          fontSize: 12,
+          fontWeight: "700"
+        },
+        tabBarIcon: ({ color, size }: { color: string; size: number }) => (
           <Ionicons name={tabIcons[route.name]} color={color} size={size} />
         )
       })}
