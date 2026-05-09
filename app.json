@@ -1,0 +1,20 @@
+{
+  "expo": {
+    "name": "Amani",
+    "slug": "amani",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "resizeMode": "contain",
+      "backgroundColor": "#F7F4EE"
+    },
+    "assetBundlePatterns": ["**/*"],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "package": "com.amani.community"
+    }
+  }
+}
